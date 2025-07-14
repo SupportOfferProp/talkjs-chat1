@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TalkJS Chat</title>
+    <script src="https://cdn.talkjs.com/talk.js"></script>
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+      #talkjs-container {
+        height: 100vh;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="talkjs-container"></div>
+
+    <script type="module">
+      import { Talk } from "https://cdn.skypack.dev/talkjs";
+
+      await Talk.ready;
+
+      const me = new Talk.User("sample_user_alice");
+      const session = new Talk.Session({ appId: "tsWHRbMF", me });
+
+      const chatbox = session.createChatbox();
+      chatbox.select("sample_conversation");
+      chatbox.mount(document.getElementById("talkjs-container"));
+    </script>
+  </body>
+</html>
 
